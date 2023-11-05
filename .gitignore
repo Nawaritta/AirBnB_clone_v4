@@ -1,0 +1,9 @@
+# Binary files
+__pycache__/
+../models/__pycache__/
+../models/engine/__pycache__/
+../models/__pycache__/
+../models/engine/__pycache__/
+
+# Virtual environment
+dyna/
