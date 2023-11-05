@@ -11,14 +11,16 @@ from flasgger.utils import swag_from
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+"""
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-
+cors = CORS(app, resources={r"/*": {"origins": "127.0.0.1"}})
+"""
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 @app.teardown_appcontext
 def close_db(error):
     """ Close Storage """
     storage.close()
-
 
 @app.errorhandler(404)
 def not_found(error):
@@ -45,5 +47,5 @@ if __name__ == "__main__":
     if not host:
         host = '0.0.0.0'
     if not port:
-        port = '5001'
+        port = '5000
     app.run(host=host, port=port, threaded=True, debug=True)
